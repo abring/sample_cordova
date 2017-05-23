@@ -20,20 +20,18 @@
     <script type="application/javascript">
         $(document).ready(function(){
             abring.init(
-                    {
-                        "app":"ir.abring.sdk",
-                        "ping_time":120,
-                        "chat_parent_id":"chat_page",
-                        "chat_show_page_function" : function(target_player_info){return display_chat_page(target_player_info)}
+                {
+                    "app":"ir.abring.sdk",
+                    "ping_time":120,
+                    "chat_parent_id":"chat_page",
+                    "chat_show_page_function" : function (target_player_info) {
+                        $("#"+abring.params.chat_parent_id+" .player_chat").hide();
+                        $("#"+abring.params.chat_parent_id+" .player_chat#chat_"+target_player_info["player_id"]).show();
+                        $.mobile.navigate("#chat");
                     }
+                }
             );
-
         });
-        var display_chat_page = function (target_player_info) {
-            $("#"+abring.params.chat_parent_id+" .player_chat").hide();
-            $("#"+abring.params.chat_parent_id+" .player_chat#chat_"+target_player_info["player_id"]).show();
-            $.mobile.navigate("#chat");
-        }
     </script>
 </head>
 <body>
@@ -48,27 +46,13 @@
     </div>
 
     <div data-role="main" class="ui-content" id="chat_page">
-
-        <div class="player_chat" id="chat_PLAYER_ID" player_id="PLAYER_ID">
-            <div class="action-div base-padding chat-header">
-                <a href="#" class="close"><img src="abring/img/Arrow_Back.svg" /></a>
-                <h3 class="message">Chat</h3>
-                <label class="socket_status">offline</label>
-            </div>
-            <div class="content-div chat_content">
-
-            </div>
-            <div class="chat-footer">
-                <textarea class="chat_message" placeholder="Type your message here"></textarea>
-                <input type="button" class="chat_send" value="Send" player_id="PLAYER_ID">
-            </div>
-        </div>
-
+        <h3>chat here</h3>
     </div>
 
     <div data-role="footer">
         <h1>Page Footer</h1>
     </div>
+
 </div>
 
 
