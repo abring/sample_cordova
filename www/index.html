@@ -23,11 +23,13 @@
                 {
                     "app":"ir.abring.sdk",
                     "ping_time":120,
-                    "chat_parent_id":"chat_page",
+                    "chat_parent_id":"chats",
+//                    "chat_template_parent_id":"chat_template",
                     "chat_show_page_function" : function (target_player_info) {
                         $("#"+abring.params.chat_parent_id+" .player_chat").hide();
                         $("#"+abring.params.chat_parent_id+" .player_chat#chat_"+target_player_info["player_id"]).show();
-                        $.mobile.navigate("#chat");
+                        abring.params.current_page = "chats";
+                        $.mobile.navigate("#chat_page");
                     }
                 }
             );
@@ -37,41 +39,16 @@
 <body>
 
 
-
-<div data-role="page" id="chat">
-
-    <div data-role="header">
-        <h1>chat</h1>
-        <a href="#pageone" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Back</a>
-    </div>
-
-    <div data-role="main" class="ui-content" id="chat_page">
-        <h3>chat here</h3>
-    </div>
-
-    <div data-role="footer">
-        <h1>Page Footer</h1>
-    </div>
-
-</div>
-
-
-
-
-
-
-
-
 <div data-role="page" id="pageone">
     <div data-role="panel" id="overlayPanel" data-display="overlay">
         <h2>Overlay Panel</h2>
         <p>
-            <div class="my_socket_status"></div>
-            <a href="#" class="abring_buttons_player_profile">Profile</a><br>
-            <a href="#" class="abring_buttons_leaderboard">Leaderboard</a><br>
-            <a href="#" class="abring_buttons_friends_list">Friends</a><br>
-            <a href="#posts" class="abring_buttons_posts_timeline">Posts</a><br>
-            <a href="#logs" >Log</a><br>
+        <div class="my_socket_status"></div>
+        <a href="#" class="abring_buttons_player_profile">Profile</a><br>
+        <a href="#" class="abring_buttons_leaderboard">Leaderboard</a><br>
+        <a href="#" class="abring_buttons_friends_list">Friends</a><br>
+        <a href="#posts" class="abring_buttons_posts_timeline">Posts</a><br>
+        <a href="#logs" >Log</a><br>
         </p>
         <a href="#pageone" data-rel="close" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left">Close panel</a>
     </div>
@@ -90,6 +67,30 @@
         <h1>Page Footer</h1>
     </div>
 </div>
+
+
+<div data-role="page" id="chat_page">
+
+    <div data-role="header">
+        <h1>chat</h1>
+        <a href="#pageone" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Back</a>
+    </div>
+
+    <div data-role="main" class="ui-content">
+        <div id="chats"></div>
+    </div>
+
+    <div data-role="footer">
+        <h1>Page Footer</h1>
+    </div>
+</div>
+
+
+
+
+
+
+
 
 
 <div data-role="page" id="posts">
