@@ -22,6 +22,22 @@
             abring.init(
                 {
                     "app":"ir.abring.sdk",
+                    "player":{
+                        "parent_id":"player_content",
+                        "showPageFunction":function (subPageID) {
+                            subPageID = subPageID || "login";
+                            $("#"+abring.params.player.parent_id+" .page").hide();
+                            $("#"+abring.params.player.parent_id+" ."+subPageID).show();
+
+                            $.mobile.navigate("#player_page");
+                        },
+                        "onDataLoaded":function (player_info) {
+                            //extra actions with player data
+                            log("XXXXXXXXXXXXXXXXXXXXXXXX");
+                            log(player_info);
+                            alert(player_info["player_id"]);
+                        }
+                    },
                     "ping_time":120,
                     "chat_parent_id":"chats",
 //                    "chat_template_parent_id":"chat_template",
@@ -96,6 +112,19 @@
 
 
 
+
+<div data-role="page" id="player_page">
+
+    <div data-role="header">
+        <h1>Players</h1>
+        <a href="#pageone" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Back</a>
+    </div>
+
+    <div data-role="main" class="ui-content">
+        <div id="player_content"></div>
+    </div>
+
+</div>
 
 
 
