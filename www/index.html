@@ -43,7 +43,7 @@
                     "chat_show_page_function" : function (target_player_info) {
                         $("#"+abring.params.chat_parent_id+" .player_chat").hide();
                         $("#"+abring.params.chat_parent_id+" .player_chat#chat_"+target_player_info["player_id"]).show();
-                        abringPageHide();
+                        abring.params.display.hidePageFunction();
                         abring.params.current_page = "chats";
                         $.mobile.navigate("#chat_page");
                     },
@@ -81,11 +81,11 @@
     <div data-role="main" class="ui-content">
         <button class="start_frog">Start</button>
         <a href="#" onclick="socketConnect();" >connect to web socket</a><br>
-        <a href="#" onclick='abringPageShow("info","some title","Some desc that is mor longer with largest amount of character to show in dialog box");' >info</a><br>
-        <a href="#" onclick='abringPageShow("warning","some title","Some desc that is mor longer with largest amount of character to show in dialog box");' >warning</a><br>
-        <a href="#" onclick='abringPageShow("loading","some title","Some desc that is mor longer with largest amount of character to show in dialog box");' >loading</a><br>
-        <a href="#" onclick='abringPageShow("confirm","some title","Some desc that is mor longer with largest amount of character to show in dialog box");' >confirm</a><br>
-        <a href="#" onclick='abringPageShow("error","some title","Some desc that is mor longer with largest amount of character to show in dialog box");' >error</a><br>
+        <a href="#" onclick='abring.params.display.showPageFunction("info","some title","Some desc that is mor longer with largest amount of character to show in dialog box");' >info</a><br>
+        <a href="#" onclick='abring.params.display.showPageFunction("warning","some title","Some desc that is mor longer with largest amount of character to show in dialog box");' >warning</a><br>
+        <a href="#" onclick='abring.params.display.showPageFunction("loading","some title","Some desc that is mor longer with largest amount of character to show in dialog box");' >loading</a><br>
+        <a href="#" onclick='abring.params.display.showPageFunction("confirm","some title","Some desc that is mor longer with largest amount of character to show in dialog box");' >confirm</a><br>
+        <a href="#" onclick='abring.params.display.showPageFunction("error","some title","Some desc that is mor longer with largest amount of character to show in dialog box");' >error</a><br>
         <div class="frog_table"></div>
     </div>
 
