@@ -24,19 +24,29 @@
                     "app":"ir.abring.sdk",
                     "player":{
                         "parent_id":"player_content",
-                        "showPageFunction":function (subPageID) {
-                            subPageID = subPageID || "login";
-                            $("#"+abring.params.player.parent_id+" .page").hide();
-                            $("#"+abring.params.player.parent_id+" ."+subPageID).show();
-
-                            $.mobile.navigate("#player_page");
-                        },
                         "onDataLoaded":function (player_info) {
                             //extra actions with player data
                             log("XXXXXXXXXXXXXXXXXXXXXXXX");
                             log(player_info);
+                        },
+                        "showPageFunction":function (subPageID) {
+                            subPageID = subPageID || "player_mobile_register";
+                            abringPageHide();
+                            $("#"+abring.params.player.parent_id+" .page").hide();
+                            $("#"+abring.params.player.parent_id+" ."+subPageID).show();
+                            $.mobile.navigate("#player_page");
                         }
                     },
+//                    "display":{
+//                        "showPageFunction":function (subPageID) {
+//                            subPageID = subPageID || "player_mobile_register";
+//                            abringPageHide();
+//                            $("#"+abring.params.player.parent_id+" .page").hide();
+//                            $("#"+abring.params.player.parent_id+" ."+subPageID).show();
+//
+//                            $.mobile.navigate("#"+subPageID);
+//                        }
+//                    },
                     "ping_time":120,
                     "chat_parent_id":"chats",
 //                    "chat_template_parent_id":"chat_template",
@@ -121,6 +131,15 @@
 
     <div data-role="main" class="ui-content">
         <div id="player_content"></div>
+    </div>
+
+</div>
+
+
+<div data-role="page" id="loading">
+
+    <div data-role="main" class="ui-content">
+LOADING ...
     </div>
 
 </div>
