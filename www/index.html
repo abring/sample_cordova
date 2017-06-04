@@ -23,19 +23,18 @@
                 {
                     "app":"ir.abring.sdk",
                     "player":{
-                        "parent_id":"player_content",
-                        "onDataLoaded":function (player_info) {
-                            //extra actions with player data
-                            log("XXXXXXXXXXXXXXXXXXXXXXXX");
-                            log(player_info);
-                        },
-                        "showPageFunction":function (subPageID) {
-                            subPageID = subPageID || "player_mobile_register";
-                            abringPageHide();
-                            $("#"+abring.params.player.parent_id+" .page").hide();
-                            $("#"+abring.params.player.parent_id+" ."+subPageID).show();
-                            $.mobile.navigate("#player_page");
-                        }
+//                        "onDataLoaded":function (player_info) {
+//                            //extra actions with player data
+//                            log("XXXXXXXXXXXXXXXXXXXXXXXX");
+//                            log(player_info);
+//                        },
+//                        "showPageFunction":function (subPageID) {
+//                            subPageID = subPageID || "player_mobile_register";
+//                            abringPageHide();
+//                            $("#"+abring.params.player.parent_id+" .page").hide();
+//                            $("#"+abring.params.player.parent_id+" ."+subPageID).show();
+//                            $.mobile.navigate("#player_page");
+//                        }
                     },
 //                    "display":{
 //                        "showPageFunction":function (subPageID) {
@@ -62,6 +61,18 @@
                     "socketRetryInterval" : 5
                 }
             );
+            abring.params.player.pages.other_player_profile.parent_id = "other_player_profile_content";
+            abring.params.player.pages.other_player_profile.show =
+                    function (other_player_id) {
+                        fillOtherPlayerInfo(other_player_id,
+                                function (other_player_info) {
+                                    $.mobile.navigate("#other_player_profile");
+                                },
+                                function (x, c, e) {
+                                    alert("Failed to fetch player data\n" + e);
+                                }
+                        );
+                    }
         });
     </script>
 </head>
@@ -122,6 +133,20 @@
 
 
 
+
+
+<div data-role="page" id="other_player_profile">
+
+    <div data-role="header">
+        <h1>Other player profile</h1>
+        <a href="#pageone" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Back</a>
+    </div>
+
+    <div data-role="main" class="ui-content other_player_profile_content">
+
+    </div>
+
+</div>
 
 
 <div data-role="page" id="player_page">
