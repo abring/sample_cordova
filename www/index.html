@@ -81,6 +81,14 @@
                     function () {
                         $.mobile.navigate("#player_mobile_register");
                     };
+
+            abring.params.player.pages.player_mobile_verify.parent_id =
+                    "player_mobile_verify_content";
+            abring.params.player.pages.player_mobile_verify.getTheme();
+            abring.params.player.pages.player_mobile_verify.show =
+                    function () {
+                        $.mobile.navigate("#player_mobile_verify");
+                    };
         });
     </script>
 </head>
@@ -165,6 +173,19 @@
     </div>
 
     <div data-role="main" class="ui-content player_mobile_register_content">
+
+    </div>
+
+</div>
+
+<div data-role="page" id="player_mobile_verify">
+
+    <div data-role="header">
+        <h1>Register by mobile number</h1>
+        <a href="#pageone" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Back</a>
+    </div>
+
+    <div data-role="main" class="ui-content player_mobile_verify_content">
 
     </div>
 
