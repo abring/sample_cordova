@@ -72,7 +72,15 @@
                                     alert("Failed to fetch player data\n" + e);
                                 }
                         );
-                    }
+                    };
+
+            abring.params.player.pages.player_mobile_register.parent_id =
+                    "player_mobile_register_content";
+            abring.params.player.pages.player_mobile_register.getTheme();
+            abring.params.player.pages.player_mobile_register.show =
+                    function () {
+                        $.mobile.navigate("#player_mobile_register");
+                    };
         });
     </script>
 </head>
@@ -109,6 +117,7 @@
         <a href="#" onclick='abring.params.display.error.show("some title","Some desc that is mor longer with largest amount of character to show in dialog box");' >error</a><br>
         <a href="#" onclick='abring.params.display.tooltip.show("some title","Some desc that is mor longer with largest amount of character to show in dialog box");' >tooltip</a><br>
         <a href="#" onclick='abring.params.player.pages.other_player_profile.show("kia");' >Sow other player info</a><br>
+        <a href="#" class="abring_buttons_player_mobile_register">Register by mobile</a><br>
         <div class="frog_table"></div>
     </div>
 
@@ -143,6 +152,19 @@
     </div>
 
     <div data-role="main" class="ui-content other_player_profile_content">
+
+    </div>
+
+</div>
+
+<div data-role="page" id="player_mobile_register">
+
+    <div data-role="header">
+        <h1>Register by mobile number</h1>
+        <a href="#pageone" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Back</a>
+    </div>
+
+    <div data-role="main" class="ui-content player_mobile_register_content">
 
     </div>
 
