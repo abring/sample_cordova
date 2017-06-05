@@ -62,8 +62,7 @@
                 }
             );
 
-            abring.params.player.pages.other_player_profile.parent_id = "other_player_profile_content";
-            abring.params.player.pages.other_player_profile.getTheme();
+            abring.params.player.pages.other_player_profile.setParentId("other_player_profile_content");
             abring.params.player.pages.other_player_profile.show =
                     function (other_player_id) {
                         fillOtherPlayerInfo(other_player_id,
@@ -76,8 +75,7 @@
                         );
                     };
 
-            abring.params.player.pages.my_profile.parent_id = "my_profile_content";
-            abring.params.player.pages.my_profile.getTheme();
+            abring.params.player.pages.my_profile.setParentId("my_profile_content");
             abring.params.player.pages.my_profile.show =
                     function (other_player_id) {
                         fillMyPlayerInfo(true);
@@ -85,8 +83,7 @@
                         $.mobile.navigate("#my_profile");
                     };
 
-            abring.params.player.pages.player_mobile_other_way.parent_id = "player_mobile_other_way_content";
-            abring.params.player.pages.player_mobile_other_way.getTheme();
+            abring.params.player.pages.player_mobile_other_way.setParentId("player_mobile_other_way_content");
             abring.params.player.pages.player_mobile_other_way.show =
                     function () {
                         abring.params.display.hidePageFunction();
@@ -99,20 +96,22 @@
                     };
 
 
-            abring.params.player.pages.player_mobile_register.parent_id =
-                    "player_mobile_register_content";
-            abring.params.player.pages.player_mobile_register.getTheme();
+            abring.params.player.pages.player_mobile_register.setParentId("player_mobile_register_content");
             abring.params.player.pages.player_mobile_register.show =
                     function () {
                         $.mobile.navigate("#player_mobile_register");
                     };
 
-            abring.params.player.pages.player_mobile_verify.parent_id =
-                    "player_mobile_verify_content";
-            abring.params.player.pages.player_mobile_verify.getTheme();
+            abring.params.player.pages.player_mobile_verify.setParentId("player_mobile_verify_content");
             abring.params.player.pages.player_mobile_verify.show =
                     function () {
                         $.mobile.navigate("#player_mobile_verify");
+                    };
+
+            abring.params.player.pages.my_profile_update.setParentId("my_profile_update_content");
+            abring.params.player.pages.my_profile_update.show =
+                    function () {
+                        $.mobile.navigate("#my_profile_update");
                     };
         });
     </script>
@@ -190,6 +189,19 @@
 
 </div>
 
+<div data-role="page" id="my_profile_update">
+
+    <div data-role="header">
+        <h1>Update my profile</h1>
+        <a href="#pageone" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Back</a>
+    </div>
+
+    <div data-role="main" class="ui-content my_profile_update_content">
+
+    </div>
+
+</div>
+
 <div data-role="page" id="other_player_profile">
 
     <div data-role="header">
@@ -242,7 +254,6 @@
 
 </div>
 
-
 <div data-role="page" id="player_page">
 
     <div data-role="header">
@@ -256,7 +267,6 @@
 
 </div>
 
-
 <div data-role="page" id="loading">
 
     <div data-role="main" class="ui-content">
@@ -264,10 +274,6 @@ LOADING ...
     </div>
 
 </div>
-
-
-
-
 
 <div data-role="page" id="posts">
 
@@ -300,9 +306,6 @@ LOADING ...
         <h1>Page Footer</h1>
     </div>
 </div>
-
-
-
 
 </body>
 </html>
