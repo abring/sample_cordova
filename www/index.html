@@ -63,6 +63,7 @@
             );
 
             abring.params.player.pages.other_player_profile.parent_id = "other_player_profile_content";
+            abring.params.player.pages.other_player_profile.getTheme();
             abring.params.player.pages.other_player_profile.show =
                     function (other_player_id) {
                         fillOtherPlayerInfo(other_player_id,
@@ -76,6 +77,7 @@
                     };
 
             abring.params.player.pages.my_profile.parent_id = "my_profile_content";
+            abring.params.player.pages.my_profile.getTheme();
             abring.params.player.pages.my_profile.show =
                     function (other_player_id) {
                         fillMyPlayerInfo(true);
@@ -83,9 +85,19 @@
                         $.mobile.navigate("#my_profile");
                     };
 
-            abring.params.display.home.show = function(){
-                $.mobile.navigate("#pageone");
-            };
+            abring.params.player.pages.player_mobile_other_way.parent_id = "player_mobile_other_way_content";
+            abring.params.player.pages.player_mobile_other_way.getTheme();
+            abring.params.player.pages.player_mobile_other_way.show =
+                    function () {
+                        abring.params.display.hidePageFunction();
+                        $.mobile.navigate("#player_mobile_other_way");
+                    };
+
+            abring.params.display.home.show =
+                    function(){
+                        $.mobile.navigate("#pageone");
+                    };
+
 
             abring.params.player.pages.player_mobile_register.parent_id =
                     "player_mobile_register_content";
@@ -212,6 +224,19 @@
     </div>
 
     <div data-role="main" class="ui-content player_mobile_verify_content">
+
+    </div>
+
+</div>
+
+<div data-role="page" id="player_mobile_other_way">
+
+    <div data-role="header">
+        <h1>player mobile other way</h1>
+        <a href="#pageone" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Back</a>
+    </div>
+
+    <div data-role="main" class="ui-content player_mobile_other_way_content">
 
     </div>
 
