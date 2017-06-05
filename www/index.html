@@ -61,6 +61,7 @@
                     "socketRetryInterval" : 5
                 }
             );
+
             abring.params.player.pages.other_player_profile.parent_id = "other_player_profile_content";
             abring.params.player.pages.other_player_profile.show =
                     function (other_player_id) {
@@ -72,6 +73,14 @@
                                     alert("Failed to fetch player data\n" + e);
                                 }
                         );
+                    };
+
+            abring.params.player.pages.my_profile.parent_id = "my_profile_content";
+            abring.params.player.pages.my_profile.show =
+                    function (other_player_id) {
+                        fillMyPlayerInfo(true);
+                        abring.params.display.hidePageFunction();
+                        $.mobile.navigate("#my_profile");
                     };
 
             abring.params.display.home.show = function(){
@@ -155,6 +164,19 @@
 
 
 
+
+<div data-role="page" id="my_profile">
+
+    <div data-role="header">
+        <h1>My profile</h1>
+        <a href="#pageone" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Back</a>
+    </div>
+
+    <div data-role="main" class="ui-content my_profile_content">
+
+    </div>
+
+</div>
 
 <div data-role="page" id="other_player_profile">
 
