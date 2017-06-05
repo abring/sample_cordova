@@ -62,7 +62,7 @@
                 }
             );
 
-            abring.params.player.pages.other_player_profile.setParentId("other_player_profile_content");
+            abring.params.player.pages.other_player_profile.setParents("other_player_profile_content");
             abring.params.player.pages.other_player_profile.show =
                     function (other_player_id) {
                         fillOtherPlayerInfo(other_player_id,
@@ -75,15 +75,16 @@
                         );
                     };
 
-            abring.params.player.pages.my_profile.setParentId("my_profile_content");
+            abring.params.player.pages.my_profile.setParents("my_profile_content");
             abring.params.player.pages.my_profile.show =
-                    function (other_player_id) {
+                    function () {
+                        alert('s');
                         fillMyPlayerInfo(true);
                         abring.params.display.hidePageFunction();
                         $.mobile.navigate("#my_profile");
                     };
 
-            abring.params.player.pages.player_mobile_other_way.setParentId("player_mobile_other_way_content");
+            abring.params.player.pages.player_mobile_other_way.setParents("player_mobile_other_way_content");
             abring.params.player.pages.player_mobile_other_way.show =
                     function () {
                         abring.params.display.hidePageFunction();
@@ -96,19 +97,19 @@
                     };
 
 
-            abring.params.player.pages.player_mobile_register.setParentId("player_mobile_register_content");
+            abring.params.player.pages.player_mobile_register.setParents("player_mobile_register_content");
             abring.params.player.pages.player_mobile_register.show =
                     function () {
                         $.mobile.navigate("#player_mobile_register");
                     };
 
-            abring.params.player.pages.player_mobile_verify.setParentId("player_mobile_verify_content");
+            abring.params.player.pages.player_mobile_verify.setParents("player_mobile_verify_content");
             abring.params.player.pages.player_mobile_verify.show =
                     function () {
                         $.mobile.navigate("#player_mobile_verify");
                     };
 
-            abring.params.player.pages.my_profile_update.setParentId("my_profile_update_content");
+            abring.params.player.pages.my_profile_update.setParents("my_profile_update_content","my_profile_update_content");
             abring.params.player.pages.my_profile_update.show =
                     function () {
                         $.mobile.navigate("#my_profile_update");
@@ -117,7 +118,6 @@
     </script>
 </head>
 <body>
-
 
 <div data-role="page" id="pageone">
     <div data-role="panel" id="overlayPanel" data-display="overlay">
@@ -158,7 +158,6 @@
     </div>
 </div>
 
-
 <div data-role="page" id="chat_page">
 
     <div data-role="header">
@@ -171,10 +170,6 @@
     </div>
 
 </div>
-
-
-
-
 
 <div data-role="page" id="my_profile">
 
@@ -197,7 +192,32 @@
     </div>
 
     <div data-role="main" class="ui-content my_profile_update_content">
+        <div class="content-div base-padding">
+            <h3 class="message"></h3>
+            <div class="ui-field-contain">
+                <div class="profile-contain-edit">
 
+                    <label>Display name:</label>
+                    <input type="text" class="name inner-profile-input" placeholder="Display name">
+                    <label >Avatar:</label>
+                    <input type="file" class="avatar avatar-edit" alt="Avatar" name="avatar" id="abring_profile_avatar_upload">
+                    <label >Cover:</label>
+                    <input type="file" class="cover cover-edit" alt="Cover" name="cover" id="abring_profile_cover_upload">
+                    <label >Mobile: </label>
+                    <input type="text" class="mobile inner-profile-input" alt="Mobile" placeholder="91...">
+                    <label >Sex:</label>
+                    <select class="sex inner-profile-input">
+                        <option value="">Select one</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                    <label class="inner-profile">Age:</label>
+                    <input type="number" class="age inner-profile-input" placeholder="Age" value="18">
+
+                </div>
+                <input type="button" style="margin-top: 10px;" class="my_profile_update_submit" value="Update">
+            </div>
+        </div>
     </div>
 
 </div>
