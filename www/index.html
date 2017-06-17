@@ -22,43 +22,8 @@
             abring.init(
                 {
                     "app":"ir.abring.sdk",
-//                    "player":{
-//                        "onDataLoaded":function (player_info) {
-//                            //extra actions with player data
-//                            log("XXXXXXXXXXXXXXXXXXXXXXXX");
-//                            log(player_info);
-//                        },
-//                        "showPageFunction":function (subPageID) {
-//                            subPageID = subPageID || "player_mobile_register";
-//                            abringPageHide();
-//                            $("#"+abring.params.player.parent_id+" .page").hide();
-//                            $("#"+abring.params.player.parent_id+" ."+subPageID).show();
-//                            $.mobile.navigate("#player_page");
-//                        }
-//                    },
-//                    "display":{
-//                        "showPageFunction":function (subPageID) {
-//                            subPageID = subPageID || "player_mobile_register";
-//                            abringPageHide();
-//                            $("#"+abring.params.player.parent_id+" .page").hide();
-//                            $("#"+abring.params.player.parent_id+" ."+subPageID).show();
-//
-//                            $.mobile.navigate("#"+subPageID);
-//                        }
-//                    },
                     "ping_time":120,
-//                    "chat_parent_id":"chats",
-//                    "chat_template_parent_id":"chat_template",
-//                    "chat_show_page_function" : function (target_player_info) {
-//                        $("#"+abring.params.chat_parent_id+" .player_chat").hide();
-//                        $("#"+abring.params.chat_parent_id+" .player_chat#chat_"+target_player_info["player_id"]).show();
-//                        abring.params.display.hidePageFunction();
-//                        abring.params.current_page = "chats";
-//                        $.mobile.navigate("#chat_page");
-//                    },
-                    "socketDomain" : '185.116.160.61',
-                    "socketPort" : 18000,
-                    "socketRetryInterval" : 5
+                    "socketRetryInterval" : 50
                 }
             );
 
@@ -119,12 +84,30 @@
 //                    function () {
 //                        $.mobile.navigate("#my_profile_update");
 //                    };
+
+
+
+            abring.params.message.pages.unicast.setParents("message_page_content");
+            abring.params.message.pages.unicast.show = function (player_info) {
+                $.mobile.navigate("#message_page");
+            };
+
+            abring.params.message.pages.list.setParents("message_list_content");
+            abring.params.message.pages.list.show = function () {
+                $.mobile.navigate("#message_list");
+            };
+
+            abring.params.message.pages.view.setParents("message_view_content");
+            abring.params.message.pages.view.show = function () {
+                $.mobile.navigate("#message_view");
+            };
+
         });
     </script>
 </head>
 <body>
 
-<div data-role="page" id="pageone">
+<div data-role="page" id="home">
     <div data-role="panel" id="overlayPanel" data-display="overlay">
         <h2>Overlay Panel</h2>
         <p>
@@ -136,7 +119,7 @@
         <a href="#logs" >Log</a><br>
         <a href="#" onclick="socketConnect();" >connect to web socket</a><br>
         </p>
-        <a href="#pageone" data-rel="close" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left">Close panel</a>
+        <a href="#home" data-rel="close" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left">Close panel</a>
     </div>
 
     <div data-role="header">
@@ -177,7 +160,7 @@
 
     <div data-role="header">
         <h1>chat</h1>
-        <a href="#pageone" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Back</a>
+        <a href="#home" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Back</a>
     </div>
 
     <div data-role="main" class="ui-content">
@@ -190,7 +173,7 @@
 
     <div data-role="header">
         <h1>My profile</h1>
-        <a href="#pageone" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Back</a>
+        <a href="#home" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Back</a>
     </div>
 
     <div data-role="main" class="ui-content my_profile_content">
@@ -203,7 +186,7 @@
 
     <div data-role="header">
         <h1>Update my profile</h1>
-        <a href="#pageone" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Back</a>
+        <a href="#home" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Back</a>
     </div>
 
     <div data-role="main" class="ui-content my_profile_update_content">
@@ -241,7 +224,7 @@
 
     <div data-role="header">
         <h1>Other player profile</h1>
-        <a href="#pageone" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Back</a>
+        <a href="#home" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Back</a>
     </div>
 
     <div data-role="main" class="ui-content other_player_profile_content">
@@ -254,7 +237,7 @@
 
     <div data-role="header">
         <h1>Register by mobile number</h1>
-        <a href="#pageone" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Back</a>
+        <a href="#home" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Back</a>
     </div>
 
     <div data-role="main" class="ui-content player_mobile_register_content">
@@ -267,7 +250,7 @@
 
     <div data-role="header">
         <h1>Register by mobile number</h1>
-        <a href="#pageone" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Back</a>
+        <a href="#home" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Back</a>
     </div>
 
     <div data-role="main" class="ui-content player_mobile_verify_content">
@@ -280,7 +263,7 @@
 
     <div data-role="header">
         <h1>player mobile other way</h1>
-        <a href="#pageone" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Back</a>
+        <a href="#home" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Back</a>
     </div>
 
     <div data-role="main" class="ui-content player_mobile_other_way_content">
@@ -293,7 +276,7 @@
 
     <div data-role="header">
         <h1>Players</h1>
-        <a href="#pageone" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Back</a>
+        <a href="#home" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Back</a>
     </div>
 
     <div data-role="main" class="ui-content">
@@ -314,7 +297,7 @@ LOADING ...
 
     <div data-role="header">
         <h1>Posts</h1>
-        <a href="#pageone" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Back</a>
+        <a href="#home" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Back</a>
     </div>
 
     <div id="frog_posts" data-role="main" class="ui-content">
@@ -330,7 +313,7 @@ LOADING ...
 
     <div data-role="header">
         <h1>Logs</h1>
-        <a href="#pageone" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Back</a>
+        <a href="#home" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Back</a>
     </div>
 
     <div class="ui-content abring_log_preview" data-role="main">
@@ -340,6 +323,48 @@ LOADING ...
     <div data-role="footer">
         <h1>Page Footer</h1>
     </div>
+</div>
+
+<div data-role="page" id="message_page">
+
+    <div data-role="header" data-position="fixed" style="position: fixed;top: 0px;">
+        <h1>پیام جدید</h1>
+        <a href="#home" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Home</a>
+        <a href="#" onclick="window.history.back();" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Back</a>
+    </div>
+
+    <div data-role="main" class="ui-content">
+        <div class="message_page_content"></div>
+    </div>
+
+</div>
+
+<div data-role="page" id="message_list">
+
+    <div data-role="header" data-position="fixed" style="position: fixed;top: 0px;">
+        <h1>لیست پیام های من</h1>
+        <a href="#home" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Home</a>
+        <a href="#" onclick="window.history.back();" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Back</a>
+    </div>
+
+    <div data-role="main" class="ui-content">
+        <div class="message_list_content"></div>
+    </div>
+
+</div>
+
+<div data-role="page" id="message_view">
+
+    <div data-role="header" data-position="fixed" style="position: fixed;top: 0px;">
+        <h1>مشاهده پیام</h1>
+        <a href="#home" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Home</a>
+        <a href="#" onclick="window.history.back();" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">Back</a>
+    </div>
+
+    <div data-role="main" class="ui-content">
+        <div class="message_view_content"></div>
+    </div>
+
 </div>
 
 </body>
