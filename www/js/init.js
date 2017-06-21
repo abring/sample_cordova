@@ -16,7 +16,6 @@ $(document).ready(function(){
     abring.player.pages.my_profile.parent_id = "my_profile_content";
     abring.player.pages.my_profile.show =
         function () {
-            fillMyPlayerInfo(true);
             abring.display.hidePageFunction();
             $.mobile.navigate("#my_profile");
         };
@@ -46,7 +45,8 @@ $(document).ready(function(){
             $.mobile.navigate("#player_mobile_verify");
         };
 
-    abring.player.pages.my_profile_update.parent_id = "my_profile_update_content","my_profile_update_content";
+    abring.player.pages.my_profile_update.parent_id = "my_profile_update_content";
+    abring.player.pages.my_profile_update.theme_parent_id = "my_profile_update_content";
     abring.player.pages.my_profile_update.show =
         function () {
             $.mobile.navigate("#my_profile_update");
